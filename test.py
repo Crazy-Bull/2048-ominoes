@@ -43,9 +43,11 @@ def start_ev(board_ind):
     with open(f"polynominoes/{board_ind}/sum_8.pkl", 'rb') as f:
         sum_8 = pickle.load(f)
 
-    contribution22 = 1 / 36 * 0.81
-    contribution24 = 1 / 36 * 0.18
-    contribution44 = 1 / 36 * 0.01
+
+    contribution22 = 1 / 28 * 0.81
+    contribution24 = 1 / 56 * 0.18
+    contribution44 = 1 / 28 * 0.01
+
 
     ev = Expectations(0,0,0,0,0)
     for state_int in start22:

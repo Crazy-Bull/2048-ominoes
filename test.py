@@ -61,5 +61,10 @@ def start_ev(board_ind):
 if __name__ == "__main__":
     unpprocessed_list, processed_list = unprocessed()
     print("Unprocessed polynominoes:", unpprocessed_list)
-    for i in processed_list:
-        print(f"Expected value for polynomino {i}:", start_ev(i).to_tuple())
+    with open('output.csv', 'w', encoding='utf-8') as file:
+        file.write('ID,128 rate,256 rate,512 rate, E[score], E[sum]\n')
+        for i in processed_list:
+            ev_tuple = start_ev(i).to_tuple()
+            print(f"Expected value for polynomino {i}:", ev_tuple)
+            file.write(f"{i},{ev_tuple[0]},{ev_tuple[1]},{ev_tuple[2]},{ev_tuple[3]},{ev_tuple[4]}\n")
+            

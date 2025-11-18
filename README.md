@@ -31,7 +31,29 @@ Other files are source codes and intermediate data. If you are not a developer, 
 ---
 ## Developer tutorial
 
+
+
 Todo
 
 ---
 ## Leaderboard
+
+- 🏆 **Highest 512 rate:** 4.65%. Winner:
+  
+  <img width="78" height="78" alt="image" src="https://github.com/user-attachments/assets/5061a8c2-cce2-4bbc-9ad0-1907a9aadf9b" />
+
+- 🏆 **Highest 256 rate, E[score] and E[sum]:** 91.23%, 2820.27 and 477.75. Winner:
+
+  <img width="78" height="78" alt="image" src="https://github.com/user-attachments/assets/db786929-8f48-48dc-9d74-7518d6d977f5" />
+
+- 🏆 **Highest 128 rate:** 99.927%. Winner:
+  
+  <img width="78" height="78" alt="image" src="https://github.com/user-attachments/assets/38341ed0-8a2e-42fa-9736-7e51a44e6036" />
+  
+- 💩 **Lowest 512 rate:** 0. Shared by 18 playboards with the structure of crossroads (十) or double T-junctions (工).
+- 💩 **Lowest 128 rate, 256 rate, nonzero 512 rate, E[score] and E[sum]:** 6.47e-4, 1.12e-8, 1.39e-19, 209.22 and 77.30. Winner?:
+  
+  <img width="78" height="78" alt="image" src="https://github.com/user-attachments/assets/15dba0d9-5bcd-4878-ad62-0f3070f3051c" />
+
+
+

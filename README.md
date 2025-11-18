@@ -19,7 +19,9 @@ This project introduces 5 criteria to evaluate each of the 369 chessboards.
 - **E[score]:** The expected value of your score when the game ends.
 - **E[sum]:** The expected value of the sum of all numbers on the board when the game ends.
 
-By default, each criteria is measured under 4sr(4 spawn rate)=0.1, and assume that the best strategy is taken on each step. Note that the best strategy may not be the same for each criteria.
+By default, each criterion is measured under **4sr**(4 spawn rate) = **0.1**, and assume that the best strategy is taken on each step. Note that the best strategy may not be the same for each criteria.
+
+Each criterion is the expected value among all possible startings. 
 
 ---
 ## Usage

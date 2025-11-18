@@ -2,6 +2,8 @@ import pickle
 from state import int2state, state_sum
 import os
 from calculate import Expectations, rnd_spawn_int
+import openpyxl
+from openpyxl.drawing.image import Image
 
 def unprocessed():
     unprocessed_list = []
@@ -58,13 +60,41 @@ def start_ev(board_ind):
         ev += Expectations(sum_8[state_int][0], sum_8[state_int][1], sum_8[state_int][2], sum_8[state_int][3], sum_8[state_int][4]) * contribution44
     return ev
 
+
+columns = ['C', 'D', 'E', 'F', 'G']
+titles = ['128 rate', '256 rate', '512 rate', 'E[Score]', 'E[Sum]']
+
 if __name__ == "__main__":
+    wb = openpyxl.Workbook()
+    ws = wb.active
+    
     unpprocessed_list, processed_list = unprocessed()
     print("Unprocessed polynominoes:", unpprocessed_list)
-    with open('output.csv', 'w', encoding='utf-8') as file:
-        file.write('ID,128 rate,256 rate,512 rate, E[score], E[sum]\n')
-        for i in processed_list:
-            ev_tuple = start_ev(i).to_tuple()
-            print(f"Expected value for polynomino {i}:", ev_tuple)
-            file.write(f"{i},{ev_tuple[0]},{ev_tuple[1]},{ev_tuple[2]},{ev_tuple[3]},{ev_tuple[4]}\n")
-            
+    ws['A1'] = 'ID'
+    ws['B1'] = 'Image'
+    for i in range(5):
+        ws[columns[i]+'1'] = titles[i]
+        ws.column_dimensions[columns[i]].width = 12
+
+    ws.column_dimensions['A'].width = 7
+    ws.column_dimensions['B'].width = 7
+
+    for i in processed_list:
+        # ID
+        ws['A'+str(i+2)] = i
+        # image
+        img_file_path = os.path.join('./polynominoes/', f"{i}/board.png")
+        img = Image(img_file_path)
+        img.width, img.height = (50,50)
+        ws.add_image(img, f"B{i+2}")
+        ev_tuple = start_ev(i).to_tuple()
+        
+        ws.row_dimensions[i+2].height = 35
+        # info
+        for j in range(5):
+            ws[columns[j]+str(i+2)] = ev_tuple[j]
+        
+        # print(f"Expected value for polynomino {i}:", ev_tuple)
+    
+    wb.save('summary.xlsx')
+    wb.close()

@@ -5,4 +5,4 @@ TEMP_FOLDER = 'tmp4'
 # whether to use cProfile for timing (default: False)
 USE_CPROFILE = False
 # list of polynomino indices to process (default: list(range(0, 369)))
-workflow = list(range(52, 53))
+workflow = [88, 89, 198, 199]

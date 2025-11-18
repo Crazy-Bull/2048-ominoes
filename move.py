@@ -16,17 +16,25 @@ def move(state, chains):
         l = len(chain)
         chain_state = [state[i] for i in chain]
         if l > max_table_len:
-            new_chain_state, apd_score, _ = move_on_chain(chain_state, chain)
+            new_chain_state, apd_score, _ = move_on_chain(chain_state, l)
 
         else:
-            new_chain_state, apd_score, _ = chain_table[l][tuple(chain_state)]
+            new_chain_state, apd_score, _ = chain_table[l][state2int(chain_state)]
+            new_chain_state = int2state(new_chain_state, n = l)
         for i in range(l):
             new_state[chain[i]] = new_chain_state[i]
         score += apd_score
 
     return new_state, score, new_state != state
 
+def state2int_first(ret_tuple):
+    return (state2int(ret_tuple[0]), ret_tuple[1], ret_tuple[2])
+
 def generate_move_function(chains):
+    max_chain_len = max([len(chain) for chain in chains])
+    if max_chain_len > 6:
+        return lambda state, _: state2int_first(move(int2state(state), chains))
+    
     str = 'def move(x, table):\n ret=0 \n sum_score=0 \n total_moved=False\n '
     for chain in chains:
         str += "y="

@@ -58,4 +58,9 @@ Todo
   <img width="78" height="78" alt="image" src="https://github.com/user-attachments/assets/15dba0d9-5bcd-4878-ad62-0f3070f3051c" />
 
 
+---
+## Acknowledgements
 
+Thanks to qumark2443 for helping me run somne boards.
+
+Thanks to auturrent for beautifying the summary table and adding rankings to it.
